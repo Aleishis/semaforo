@@ -1,35 +1,42 @@
 body {
-    background-color: gray;
+    margin: 0;
+    padding: 30px;
+    background-color: rgb(225, 228, 233);
+    font-family: Arial, sans-serif;
+    color: #333;
 }
 
 section {
     display: flex;
-    column-gap: 100px;
+    column-gap: 80px;
+    row-gap: 30px;
     justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-#marco-semaforo{
+/* Marco del semáforo */
+#marco-semaforo {
     background-color: rgb(44, 44, 44);
     width: 200px;
     height: 600px;
     margin-top: 30px;
     position: relative;
     padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
 }
 
-
+/* Luces */
 .luz {
     border-radius: 50%;
-    background: rgb(251, 251, 247);
     position: absolute;
     z-index: 1;
     height: 150px;
     width: 150px;
     margin: 25px;
-    opacity: 0.1;           
-    transition: opacity 0.3s ease;
+    opacity: 0.1;
 }
-
 
 .luz.verde {
     background-color: green;
@@ -43,37 +50,137 @@ section {
     background-color: red;
 }
 
-.luz.roja.activa {
-  background: red;
-  opacity: 1;
-}
-
-.luz.amarilla.activa {
-  background: yellow;
-  opacity: 1;
-}
-
-.luz.verde.activa {
-  background: green;
-  opacity: 1;
-}
-
-@keyframes parpadeo {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
-
-.luz.verde.parpadeo {
-  animation: parpadeo 0.3s steps(1) infinite;
-}
-
-.btn-luz{
-    color: aqua;
+.luz.activa {
+    opacity: 1;
 }
 
 .segunda {
     margin-top: 220px;
 }
+
 .tercera {
     margin-top: 410px;
+}
+
+/* Parpadeo del verde */
+@keyframes parpadeo {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+}
+
+.luz.verde.parpadeo {
+    animation: parpadeo 0.3s steps(1) infinite;
+}
+
+/* Panel de botones */
+#botones {
+    margin-top: 50px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#botones button {
+    display: block;
+    width: 180px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccd2da;
+    border-radius: 8px;
+    background-color: #f0f3f8;
+    color: #333;
+    font-size: 17px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#botones button:last-child {
+    margin-bottom: 0;
+}
+
+/* Solo los botones habilitados reaccionan al mouse */
+#botones button:hover:not(:disabled) {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+#botones button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#botones button:focus-visible {
+    outline: 3px solid cornflowerblue;
+    outline-offset: 3px;
+}
+
+#btn-automatico,
+#btn-manual {
+    font-weight: bold;
+}
+
+#botones #btn-apagar {
+    background-color: #fce8e8;
+    color: #a52222;
+}
+
+#botones #btn-apagar:hover {
+    background-color: #a52222;
+    color: white;
+}
+
+/* Panel de contadores */
+#contadores {
+    margin-top: 50px;
+    padding: 25px;
+    min-width: 190px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#contadores p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 20px 0;
+    font-size: 20px;
+}
+
+#contadores p + p {
+    border-top: 1px solid #e5e5e5;
+}
+
+#contadores span {
+    margin-left: auto;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Círculos decorativos junto a los contadores */
+#contadores p::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+#contadores p:nth-of-type(1)::before {
+    background-color: green;
+}
+
+#contadores p:nth-of-type(2)::before {
+    background-color: yellow;
+}
+
+#contadores p:nth-of-type(3)::before {
+    background-color: red;
 }
