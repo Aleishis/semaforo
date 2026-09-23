@@ -1,0 +1,79 @@
+body {
+    background-color: gray;
+}
+
+section {
+    display: flex;
+    column-gap: 100px;
+    justify-content: center;
+}
+
+#marco-semaforo{
+    background-color: rgb(44, 44, 44);
+    width: 200px;
+    height: 600px;
+    margin-top: 30px;
+    position: relative;
+    padding: 20px;
+}
+
+
+.luz {
+    border-radius: 50%;
+    background: rgb(251, 251, 247);
+    position: absolute;
+    z-index: 1;
+    height: 150px;
+    width: 150px;
+    margin: 25px;
+    opacity: 0.1;           
+    transition: opacity 0.3s ease;
+}
+
+
+.luz.verde {
+    background-color: green;
+}
+
+.luz.amarilla {
+    background-color: yellow;
+}
+
+.luz.roja {
+    background-color: red;
+}
+
+.luz.roja.activa {
+  background: red;
+  opacity: 1;
+}
+
+.luz.amarilla.activa {
+  background: yellow;
+  opacity: 1;
+}
+
+.luz.verde.activa {
+  background: green;
+  opacity: 1;
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.luz.verde.parpadeo {
+  animation: parpadeo 0.3s steps(1) infinite;
+}
+
+.btn-luz{
+    color: aqua;
+}
+
+.segunda {
+    margin-top: 220px;
+}
+.tercera {
+    margin-top: 410px;
+}

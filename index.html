@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaforo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <section>
+        <div id="semaforo">
+
+            <div id="marco-semaforo">
+                <div class="luz verde" id="luz-verde"></div>
+                <div class="segunda luz amarilla" id="luz-amarilla"></div>
+                <div class="tercera luz roja" id="luz-roja"></div>
+            </div>
+
+        </div>
+
+        <div id="botones">
+
+            <button id="btn-automatico">
+                Automatico
+            </button>
+            <button id="btn-manual">
+                Manual
+            </button>
+
+            <button class="btn-luz" id="btn-verde" disabled>
+                Verde
+            </button>
+            <button class="btn-luz" id="btn-amarilla" disabled>
+                Amarilla
+            </button>
+            <button class="btn-luz" id="btn-roja" disabled>
+                Roja
+            </button>
+
+        </div>
+
+        <div id="contadores">
+
+            <p>Verde <span id="contador-verde">0</span></p>
+            <p>Amarilla <span id="contador-amarilla">0</span></p>
+            <p>Roja <span id="contador-roja">0</span></p>
+
+        </div>
+    </section>
+
+    <script src="semaforo.js"></script>
+    
+</body>
+</html>
