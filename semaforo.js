@@ -1,5 +1,6 @@
 const btnAutomatico = document.getElementById("btn-automatico");
 const btnManual = document.getElementById("btn-manual");
+const btnApagar = document.getElementById("btn-apagar");
 const btnLuzVerde = document.getElementById("btn-verde");
 const btnLuzAmarilla = document.getElementById("btn-amarilla");
 const btnLuzRoja = document.getElementById("btn-roja");
@@ -16,7 +17,11 @@ const intervalos = {'verde' : 7500, 'amarilla' : 2000, 'roja':4000}
 const tiempoParpadeo = 1500;
 
 
-btnAutomatico.addEventListener("click",() => ciclo());
+btnAutomatico.addEventListener("click", function() {
+    clearTimeout(cicloId);
+    clearTimeout(parpadeoTimeoutId);
+    ciclo();
+});
 
 function ciclo (i=0){
 
@@ -62,6 +67,22 @@ btnLuzRoja.addEventListener("click", function() {
     encender("roja");
 })
 
+btnApagar.addEventListener("click", function() {
+    // Detener el ciclo automático y el parpadeo pendiente.
+    clearTimeout(cicloId);
+    clearTimeout(parpadeoTimeoutId);
+
+    // Apagar todas las luces y quitar su animación.
+    document.querySelectorAll('.luz').forEach(l => {
+        l.classList.remove('activa');
+        l.classList.remove('parpadeo');
+    });
+
+    // Para elegir un color, primero se debe activar el modo manual.
+    document.querySelectorAll('.btn-luz').forEach(b => {
+        b.disabled = true;
+    });
+});
 
 function encender(color){
 
